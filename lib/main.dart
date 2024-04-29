@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 
 import 'package:netflix_clone/screens/splash_screen.dart';
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: const SplashScreen(),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
       ),
