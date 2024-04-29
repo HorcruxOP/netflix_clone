@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:netflix_clone/widgets/custom_appbar.dart';
 import 'package:netflix_clone/widgets/featured_movie_card.dart';
 import 'package:netflix_clone/widgets/filter_bar.dart';
 import 'package:netflix_clone/widgets/home_screen_listbar.dart';
 
-class TvShowsScreen extends StatelessWidget {
-  const TvShowsScreen({super.key});
+class MoviesScreen extends StatelessWidget {
+  const MoviesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,7 @@ class TvShowsScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 20),
                       const Text(
-                        "TV Shows",
+                        "Movies",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -63,7 +61,7 @@ class TvShowsScreen extends StatelessWidget {
                         children: [
                           GestureDetector(
                             child: FilterBar(
-                              text: "TV Shows",
+                              text: "Movies",
                               color: Colors.grey.withOpacity(0.4),
                             ),
                             onTap: () {},
@@ -76,11 +74,13 @@ class TvShowsScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    FeaturedMovieCard(),
-                    HomeScreenListBar(headingText: "TV Comedies"),
-                    HomeScreenListBar(
-                        headingText: "Movies & TV Shows Dubbed in Hindi"),
-                    HomeScreenListBar(headingText: "Top 10 TV Shows in India"),
+                    const FeaturedMovieCard(),
+                    const HomeScreenListBar(
+                      headingText: "Comedy Movies",
+                    ),
+                    const HomeScreenListBar(headingText: "Trending Now"),
+                    const HomeScreenListBar(
+                        headingText: "Top 10 Movies in India"),
                   ],
                 ),
               ),

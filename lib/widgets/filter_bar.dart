@@ -23,6 +23,5 @@ class FilterBar extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

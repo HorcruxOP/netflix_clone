@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const HomeScreen(),
-      theme: ThemeData(scaffoldBackgroundColor: Colors.black),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.black,
+      ),
     );
   }
 }

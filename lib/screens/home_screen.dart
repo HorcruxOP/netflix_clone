@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:netflix_clone/screens/movie_details_screen.dart';
+import 'package:netflix_clone/screens/movies_screen.dart';
 import 'package:netflix_clone/screens/tv_shows_screen.dart';
 import 'package:netflix_clone/widgets/bottom_navigation_bar.dart';
 import 'package:netflix_clone/widgets/custom_appbar.dart';
@@ -51,13 +52,23 @@ class HomeScreen extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => TvShowsScreen()));
+                                        builder: (context) =>
+                                            const TvShowsScreen()));
                               },
                             ),
                             const SizedBox(width: 10),
-                            const FilterBar(
-                              text: "Movies",
-                              color: Colors.transparent,
+                            GestureDetector(
+                              child: const FilterBar(
+                                text: "Movies",
+                                color: Colors.transparent,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const MoviesScreen()));
+                              },
                             ),
                             const SizedBox(width: 10),
                             const FilterBar(

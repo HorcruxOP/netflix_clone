@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/screens/movie_details_screen.dart';
 
 class HomeScreenListBar extends StatelessWidget {
   const HomeScreenListBar({super.key, required this.headingText});
@@ -29,39 +30,47 @@ class HomeScreenListBar extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 10,
             itemBuilder: (context, index) {
-              return Stack(
-                children: [
-                  Container(
-                    height: 200,
-                    width: 140,
-                    padding: const EdgeInsets.all(3),
-                    child: Image.asset(
-                      "assets/images/article370cover.jpg",
-                      fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MovieDetailScreen()));
+                },
+                child: Stack(
+                  children: [
+                    Container(
+                      height: 200,
+                      width: 140,
+                      padding: const EdgeInsets.all(3),
+                      child: Image.asset(
+                        "assets/images/article370cover.jpg",
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: 3,
-                    left: 18,
-                    right: 18,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 3, horizontal: 8),
-                      decoration: const BoxDecoration(
-                          color: Color.fromARGB(255, 252, 32, 16)),
-                      child: const Center(
-                        child: Text(
-                          "Recently added",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
+                    Positioned(
+                      bottom: 3,
+                      left: 18,
+                      right: 18,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 3, horizontal: 8),
+                        decoration: const BoxDecoration(
+                            color: Color.fromARGB(255, 252, 32, 16)),
+                        child: const Center(
+                          child: Text(
+                            "Recently added",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               );
             },
           ),
