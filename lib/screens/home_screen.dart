@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'package:netflix_clone/screens/tv_shows_screen.dart';
+import 'package:netflix_clone/widgets/bottom_navigation_bar.dart';
+import 'package:netflix_clone/widgets/custom_appbar.dart';
 import 'package:netflix_clone/widgets/featured_movie_card.dart';
-import 'package:netflix_clone/widgets/home_screen_filter_bar.dart';
+import 'package:netflix_clone/widgets/filter_bar.dart';
+import 'package:netflix_clone/widgets/home_screen_listbar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,15 +13,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomAppbar(
+                widget: [
                   Image.asset("assets/logos/netflixlogo.png", height: 50),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
@@ -28,38 +30,69 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Row(
-                children: [
-                  HomeScreenFilterBar(text: "TV Shows"),
-                  SizedBox(width: 10),
-                  HomeScreenFilterBar(text: "Movies"),
-                  SizedBox(width: 10),
-                  HomeScreenFilterBar(text: "Categories"),
-                ],
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              child: const FilterBar(
+                                text: "TV Shows",
+                                color: Colors.transparent,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => TvShowsScreen()));
+                              },
+                            ),
+                            const SizedBox(width: 10),
+                            const FilterBar(
+                              text: "Movies",
+                              color: Colors.transparent,
+                            ),
+                            const SizedBox(width: 10),
+                            const FilterBar(
+                              text: "Categories",
+                              color: Colors.transparent,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const FeaturedMovieCard(),
+                      const HomeScreenListBar(
+                        headingText: 'Recently Added',
+                      ),
+                      const HomeScreenListBar(
+                        headingText: 'Trending Now',
+                      ),
+                      const HomeScreenListBar(
+                        headingText: 'Only On Netflix',
+                      ),
+                      const HomeScreenListBar(
+                        headingText: 'Action Thrillers',
+                      ),
+                      const HomeScreenListBar(
+                        headingText: 'True Crime',
+                      ),
+                      const HomeScreenListBar(
+                        headingText: 'TV Shows',
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            const FeaturedMovieCard(),
-          ],
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(221, 22, 22, 22),
-        type: BottomNavigationBarType.fixed,
-        fixedColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.games), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Home"),
-        ],
-      ),
-    );
+        bottomNavigationBar: const BottomNavigationbar());
   }
 }
